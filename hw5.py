@@ -2,11 +2,13 @@ import logging
 import os
 import sqlite3
 from aiogram import Bot, Dispatcher, F, types
+from dotenv import load_dotenv
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 
+load_dotenv()
 API_TOKEN = os.getenv("BOT_TOKEN")
 if not API_TOKEN:
     raise RuntimeError("Не задан токен бота. Установите переменную окружения BOT_TOKEN.")
