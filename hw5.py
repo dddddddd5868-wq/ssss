@@ -1,4 +1,5 @@
 import logging
+import os
 import sqlite3
 from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters import Command
@@ -6,7 +7,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 
-API_TOKEN = 'ВАШ_ТОКЕН_БОТА'
+API_TOKEN = os.getenv("BOT_TOKEN")
+if not API_TOKEN:
+    raise RuntimeError("Не задан токен бота. Установите переменную окружения BOT_TOKEN.")
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
